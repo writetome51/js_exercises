@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<!--
+This example demonstrates passing an element's attribute as argument
+to javascript function
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<p id="written-to-page"></p>
+
+<div style="background-color:lightcyan" id="attribute-test-div"
+     class="redDiv  anotherClass"  title="aTest"
+     onclick="showInConsoleLog(this.attributes)"
+     onmouseover="showInConsoleLog(this.style)"
+     onmouseout="showInConsoleLog(this.title)" >  <!-- a reference to 'class' attribute has to be 'className' , not 'class'.   -->
+Attribute Test
+</div>
+
+<div style="background-color:lightgrey" id="calls-external-function" class="redDiv  anotherClass"  title="aTest"
+     onclick="ChangeToGreen(this.id)" >
+    Change to green.
+</div>
+
+
+<script src="new-exercise.js"></script>
+</body>
+</html>

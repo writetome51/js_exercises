@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todays Test</title>
+    <style>
+        .green{color:lightgreen;}
+        .red{color:red;}
+    </style>
+</head>
+<body>
+
+<div id="javascript-test"  onmouseover="toggleColor()"  onmouseout="toggleColor()">
+    <p class="green  change-color">Don't click in this area.</p>
+    <p class="green">Click me and I'll change my color.</p>
+    <p class="green  change-color">Don't click in this area.</p>
+    <p class="green">Click me and I'll change my color.</p>
+
+</div>
+
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+
+<script>
+    function toggleColor() {
+        x = $('.change-color');
+        x.toggleClass('green red');
+    }
+</script>
+</body>
+</html>
