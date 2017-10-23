@@ -8,30 +8,49 @@
 
         showInitialColors();
 
-        // Rule: the input's id must end with '-color' ,
-        // and the element it's intended to change must have an id that's
-        // identical, except not end with '-color'.  For instance,
-        // an input with id 'mouth-color' will change an element with id 'mouth'.
+       
+	    var eventConfigurations = [
+            /* Add one configuration object for every eventFunction.
+               A configuration object should look like this:
+                {
+                    elements: getElementsByIDs(arrayOfIDs),
+                    eventsToAdd: arrayOfEvents,
+                    eventFunction: functionToAttachToEvents
+                },
 
-        var IDsOfElementsToAddEventListenersTo = [
-            'left-eye-color',
-            'right-eye-color',
-            'mouth-color',
-            'monster-body-color'
-        ];
-
-        var events = [
-            // don't include 'on' in the name:
-            'input',
-            'change'
-        ];
+                {anotherObject},
+                and so on...
+            */
 
 
-        addEventListenersToIDs(
-            IDsOfElementsToAddEventListenersTo,
-            events,
-            changeBackgroundColorOfRelatedElement
-        );
+		    {
+			    elements: getElementsByIDs(
+                    [
+                        // Rule: the input's id must end with '-color' ,
+                        // and the element it's intended to change must have an id that's
+                        // identical, except not end with '-color'.  For instance,
+                        // an input with id 'mouth-color' will change an element with id 'mouth'.
+                        'left-eye-color',
+                        'right-eye-color',
+                        'mouth-color',
+                        'monster-body-color'
+                    ]
+                ),
+			
+			    eventsToAdd: [
+				    // don't include 'on' in the name, and keep it all lowercase:
+				    'input',
+ 				    'change'
+			    ],
+
+			    eventFunction: changeBackgroundColorOfRelatedElement
+		    },
+
+	    ];
+
+
+	    configureElementsWithEventsAndRelatedFunctions(eventConfigurations);
+
     }
 
 
@@ -60,7 +79,7 @@
 
 
     function idOfElementRelatedTo(inputId){
-        return inputId.replace('-color', ''); // removes '-color' from string.
+        return inputId.replace('-color', '');
         //Add this function later:
         // function removeDashColorFromEnd(){
         //      if (inputId has '-color' at its end)
