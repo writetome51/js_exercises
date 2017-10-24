@@ -1,63 +1,60 @@
-
-(function getInputValuesAndChangeBackgroundColors(){
+(function getInputValuesAndChangeBackgroundColors() {
 
     mainRoutine();
 
 
-    function mainRoutine(){
+    function mainRoutine() {
 
         showInitialColors();
 
-       
-	    var eventConfigurations = [
+        var eventConfigurations = [
             /* Add one configuration object for every eventFunction.
-               A configuration object should look like this:
+               A configuration object needs these properties:
                 {
                     elements: getElementsByIDs(arrayOfIDs),
                     eventsToAdd: arrayOfEvents,
                     eventFunction: functionToAttachToEvents
-                },
-
-                {anotherObject},
-                and so on...
+                }
             */
 
 
-		    {
-			    elements: getElementsByIDs(
+            {
+                elements: getElementsByIDs(
                     [
                         // Rule: the input's id must end with '-color' ,
                         // and the element it's intended to change must have an id that's
-                        // identical, except not end with '-color'.  For instance,
-                        // an input with id 'mouth-color' will change an element with id 'mouth'.
+                        // identical, except not end with '-color'.
                         'left-eye-color',
                         'right-eye-color',
                         'mouth-color',
                         'monster-body-color'
                     ]
                 ),
-			
-			    eventsToAdd: [
-				    // don't include 'on' in the name, and keep it all lowercase:
-				    'input',
- 				    'change'
-			    ],
 
-			    eventFunction: changeBackgroundColorOfRelatedElement
-		    },
+                eventsToAdd: [
+                    // don't include 'on' in the name, and keep it all lowercase:
+                    'input',
+                    'change'
+                ],
 
-	    ];
+                eventFunction: changeBackgroundColorOfRelatedElement
+            },
+
+        ];
 
 
-	    configureElementsWithEventsAndRelatedFunctions(eventConfigurations);
+        var configurator = new EventConfigurator();
+
+        configurator.configure(eventConfigurations);
+
 
     }
 
 
-    function showInitialColors(){
+    function showInitialColors() {
         var inputsDiv = document.getElementById('inputs');
         var inputs = inputsDiv.getElementsByTagName('input');
-        for (var i=0; i<inputs.length; ++i){
+        for (var i = 0; i < inputs.length; ++i) {
             callAsMethodOfTheObject(inputs[i], changeBackgroundColorOfRelatedElement);
         }
     }
@@ -65,7 +62,7 @@
 
     //This function assumes it will eventually be attached as
     //a method to an object.  This is why the reference to this.id
-    function changeBackgroundColorOfRelatedElement(){
+    function changeBackgroundColorOfRelatedElement() {
         var color = colorValueFrom(this.id);
         var id = idOfElementRelatedTo(this.id);
 
@@ -73,12 +70,12 @@
     }
 
 
-    function colorValueFrom(inputId){
+    function colorValueFrom(inputId) {
         return String(document.getElementById(inputId).value);
     }
 
 
-    function idOfElementRelatedTo(inputId){
+    function idOfElementRelatedTo(inputId) {
         return inputId.replace('-color', '');
         //Add this function later:
         // function removeDashColorFromEnd(){
@@ -88,7 +85,7 @@
     }
 
 
-    function setBackgroundColorOf(id, color){
+    function setBackgroundColorOf(id, color) {
         document.getElementById(id).style.backgroundColor = color;
     }
 
