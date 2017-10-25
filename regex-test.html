@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{font-family: "Helvetica Neue", serif;}
+
+        .highlighted{
+            background-color: lawngreen;   margin:0; border:none;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input id="text-input" type="text" onkeyup="searchExpression(this.value)">
+    <p>
+        &nbsp;&nbsp; Match found at: <span id="search-result"></span>
+    </p>
+
+</div>
+
+<p id="text-to-search">
+    I live at 100 N. 7000 W. West Valley City, UT.  My zip code is 90210-1012.  The ongoing public feud between Sen. Bob Corker and President Donald Trump exploded Tuesday ahead of the President's high-stakes visit to Capitol Hill for tax negotiations, with the Tennessee Republican telling CNN's Manu Raju he wouldn't support Trump for president if given the opportunity again.
+</p>
+
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+    var str = '33IcKen turkey';
+    var pattern = /[a-z]/i;
+    sr = str.search(pattern);
+    console.log(sr);
+    */
+
+
+    function searchExpression(pattern){
+        var textParagraph = $('#text-to-search');
+        var str = textParagraph.text();
+        if (pattern === ''){
+            textParagraph.html(str);
+            $('#search-result').text('');
+        }
+        else{
+            pattern = new RegExp(pattern, 'g');
+            var result = pattern.exec(str);
+            $('#search-result').text(result);
+            textParagraph.html(str.replace(new RegExp(result,'g'),
+                '<span class="highlighted">' + result + '</span>'));
+
+        }
+
+    }
+
+</script>
+</body>
+</html>
