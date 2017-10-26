@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{font-family: "Helvetica Neue", serif;}
+
+        .highlighted{
+            background-color: lawngreen;   margin:0; border:none;
+            padding:0;
+        }
+
+        #text-input{margin-right:20px;}
+        label{margin-right:5px;}
+
+    </style>
+</head>
+<body>
+<div>
+    <label id="search-input-label">Search for </label>
+    <input id="text-input" type="text" oninput="findMatches()"
+           onchange="findMatches()">
+    <input type="checkbox" id="case-sensitive-checkbox"
+           onchange="findMatches()">
+    <label id="case-sensitive-label">Case-Sensitive </label>
+    <p id="result-line">
+        Matches found: <span id="search-result"></span>
+    </p>
+
+</div>
+
+<p id="text-to-search">I live at 100 N. 7000 W. West Valley City, UT. My zip code is 90210-1012. The ongoing public feud between Sen. Bob Corker and President Donald Trump exploded Tuesday ahead of the President's high-stakes visit to Capitol Hill for tax negotiations, with the Tennessee Republican telling CNN's Manu Raju he wouldn't support Trump for president if given the opportunity again.
+</p>
+<br>
+<br>
+<br>
+<pre id="debug-text"></pre>
+
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+
+    function uniqueItems(arr){
+        for (var i=0, newArr=[];  i<arr.length;  ++i){
+            if (i===0) {
+                newArr.push(arr[i]);
+            }
+            else if (newArr.indexOf( arr[i] ) === -1) {
+                newArr.push(arr[i]);
+            }
+        }
+        return newArr;
+    }
+
+
+    /*
+     Important Issue:
+       Neither the 'innerHTML' or 'innerText' properties contain the exact
+       same text that is displayed in the browser page.  For display, the
+       browser removes any extra spaces so there is always just one space
+       separating words and sentences.  But when you retrieve the value of
+       'innerText', you get the text precisely as it's written in the HTML
+       file: excessive spaces, tabs, line breaks, everything.
+       This has caused unexpected behavior during testing of this
+       text-search app.  The solution is to either format the inner text
+       in the file the same way as it's shown in the browser, or, wrap the
+       text inside a <pre> element so that what you see is what you get.
+       If you want the user to be able to modify the text that will
+       eventually be searched, you should choose the latter.  Else, choose
+       the former.  Of course this only applies to text-search matching
+       applications.
+
+       Other issues:
+           Converting innerHTML to innerText via a statement like:
+               $('p').text( $('p').html() );
+           will cause any special characters (such as '<' and '>' used in tags)
+           to be displayed as HTML character entities ( such as '&lt;' and '&gt;' )
+    */
+    function findMatches(){
+
+        var pattern = $('#text-input').val();
+        var paragraph = $('#text-to-search');
+
+        if (pattern === ''  ||  noMatch()){
+            paragraph.children('span').removeClass('highlighted');
+            $('#search-result').text('0');
+        }
+
+        else{
+            const SPECIALCHARS = [
+                "$", "^", "*", "(", ")", "?", "+", "[", "|",
+                ".", "/", "\\"
+            ];
+            const OPENSPAN = '⚣⚣⚣';
+            const CLOSESPAN = '⚤⚤⚤';
+
+            var caseMod = 'i';
+            var isChecked = $('#case-sensitive-checkbox').prop('checked');
+            if (isChecked) { caseMod = ''; }
+
+            pattern = new RegExp(pattern, (caseMod + 'g'));
+
+            var innerHtml = paragraph.text();
+
+            var matches = innerHtml.match(pattern);
+
+            //for debugging:
+            $('#debug-text').text(innerHtml);
+
+
+            if (Array.isArray(matches)){
+                $('#search-result').text(matches.length);
+
+                matches = uniqueItems(matches);
+
+                for (var i=0, innerText = paragraph.text();
+                     i < matches.length;   ++i){
+                    var currentSearch = matches[i];
+
+                    var regex = new RegExp(currentSearch,'g');
+                    innerText = innerText.replace(regex,
+                        OPENSPAN + currentSearch + CLOSESPAN);
+                        // <span> substitutions.
+                }
+
+                regex = new RegExp(OPENSPAN,'g');
+                innerText = innerText.replace(regex, "<span>");
+                regex = new RegExp(CLOSESPAN,'g');
+                innerText = innerText.replace(regex, "</span>");
+                paragraph.html(innerText);
+
+                paragraph.children('span').addClass('highlighted');
+            }
+
+
+        }
+
+    }
+
+</script>
+</body>
+</html>
