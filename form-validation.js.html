@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{color:red; display: block; margin-bottom: 20px;}
+        input{display:block;}
+    </style>
+</head>
+<body>
+<form>
+
+    Name: <input id="myName-input" type="text" name="myName"
+           required minlength="6" maxlength="16" onblur="validateForm()">
+
+
+    Message: <input id="myMessage-text" type="text" name="myMessage"
+           required   minlength="6" maxlength="16"  onblur="validateForm()">
+    <span id="error"></span>
+    <button onclick="validateForm()">Submit</button>
+</form>
+
+
+<script>
+    function validateForm(){
+        var myName = document.getElementById('myName-input').value;
+        var myMessage = document.getElementById('myMessage-text').value;
+
+        myName = removeSpaces(myName);
+        myMessage = removeSpaces(myMessage);
+
+        console.log(myMessage.length);
+
+        if (myName === '' || myMessage === ''){
+            document.getElementById('error').innerText = 'Both fields must have some text';
+        }
+        else if (myName.length < 6  ||  myName.length > 16  ||
+                myMessage.length < 6  ||  myMessage.length > 16){
+            document.getElementById('error').innerText = 'one of the fields you entered has too few or too many characters, but I\'m too lazy to tell you which.';
+
+        }
+
+        else{
+            document.getElementById('error').innerText = '';
+        }
+    }
+
+    function removeSpaces(str){
+        str = str.replace(new RegExp(' ', 'g'), '');
+        return str;
+    }
+</script>
+</body>
+</html>

@@ -19,10 +19,10 @@
 <body>
 <div>
     <label id="search-input-label">Search for </label>
-    <input id="text-input" type="text" oninput="findMatches()"
-           onchange="findMatches()">
+    <input id="text-input" type="text" oninput="showMatches()"
+           onchange="showMatches()">
     <input type="checkbox" id="case-sensitive-checkbox"
-           onchange="findMatches()">
+           onchange="showMatches()">
     <label id="case-sensitive-label">Case-Sensitive </label>
     <p id="result-line">
         Matches found: <span id="search-result"></span>
@@ -63,7 +63,7 @@
        'innerText', you get the text precisely as it's written in the HTML
        file: excessive spaces, tabs, line breaks, everything.
        This has caused unexpected behavior during testing of this
-       text-search app.  The solution is to either format the inner text
+        app.  The solution is to either format the inner text
        in the file the same way as it's shown in the browser, or, wrap the
        text inside a <pre> element so that what you see is what you get.
        If you want the user to be able to modify the text that will
@@ -71,71 +71,107 @@
        the former.  Of course this only applies to text-search matching
        applications.
 
-       Other issues:
-           Converting innerHTML to innerText via a statement like:
-               $('p').text( $('p').html() );
-           will cause any special characters (such as '<' and '>' used in tags)
-           to be displayed as HTML character entities ( such as '&lt;' and '&gt;' )
+        Other Issues:
+            Converting innerHTML to innerText via a statement like:
+            $('p').text( $('p').html() );
+        will cause any special characters (such as '<' and '>' used in tags)
+        to be displayed as HTML character entities ( such as '&lt;' and '&gt;' )
     */
-    function findMatches(){
 
-        var pattern = $('#text-input').val();
+    function noMatches(pattern){
+        //for debugging:
+       // $('#debug-text').text(innerText);
+
+        var searchText = $('#text-to-search').text();
+        var matches = searchText.match(pattern);
+        return isNotArray(matches);
+
+    }
+
+
+    function isNotArray(param){
+        return ( !Array.isArray(param) );
+    }
+
+
+    function highlightMatches(matches){
+        const OPENSPAN = '⚣⚣⚣';
+        const CLOSESPAN = '⚤⚤⚤';
+
+
+        $('#search-result').text(matches.length);
+
+        // Without this line you'll get redundant iterations in the loop
+        // below:
+        matches = uniqueItems(matches);
+
+        for (var i=0, innerText = paragraph.text();
+             i < matches.length;   ++i){
+            var currentSearch = matches[i];
+
+            var regex = new RegExp(currentSearch,'g');
+            innerText = innerText.replace(regex,
+                OPENSPAN + currentSearch + CLOSESPAN);
+            // <span> substitutions.  Substituting html tags with
+            // these special placeholders and then putting the tags
+            // back in once the loop is over solves bugs.
+        }
+
+        regex = new RegExp(OPENSPAN,'g');
+        innerText = innerText.replace(regex, "<span>");
+        regex = new RegExp(CLOSESPAN,'g');
+        innerText = innerText.replace(regex, "</span>");
+        paragraph.html(innerText);
+
+        paragraph.children('span').addClass('highlighted');
+
+    }
+
+
+    function showMatches(){
+
+        var userInput = $('#text-input').val();
         var paragraph = $('#text-to-search');
 
-        if (pattern === ''  ||  noMatch()){
-            paragraph.children('span').removeClass('highlighted');
-            $('#search-result').text('0');
+        if (userInput === '' ){
+            clearResults();
         }
-
         else{
-            const SPECIALCHARS = [
-                "$", "^", "*", "(", ")", "?", "+", "[", "|",
-                ".", "/", "\\"
-            ];
-            const OPENSPAN = '⚣⚣⚣';
-            const CLOSESPAN = '⚤⚤⚤';
-
-            var caseMod = 'i';
-            var isChecked = $('#case-sensitive-checkbox').prop('checked');
-            if (isChecked) { caseMod = ''; }
-
-            pattern = new RegExp(pattern, (caseMod + 'g'));
-
-            var innerHtml = paragraph.text();
-
-            var matches = innerHtml.match(pattern);
-
-            //for debugging:
-            $('#debug-text').text(innerHtml);
-
-
-            if (Array.isArray(matches)){
-                $('#search-result').text(matches.length);
-
-                matches = uniqueItems(matches);
-
-                for (var i=0, innerText = paragraph.text();
-                     i < matches.length;   ++i){
-                    var currentSearch = matches[i];
-
-                    var regex = new RegExp(currentSearch,'g');
-                    innerText = innerText.replace(regex,
-                        OPENSPAN + currentSearch + CLOSESPAN);
-                        // <span> substitutions.
-                }
-
-                regex = new RegExp(OPENSPAN,'g');
-                innerText = innerText.replace(regex, "<span>");
-                regex = new RegExp(CLOSESPAN,'g');
-                innerText = innerText.replace(regex, "</span>");
-                paragraph.html(innerText);
-
-                paragraph.children('span').addClass('highlighted');
-            }
-
-
+            doThis(userInput);
         }
 
+    }
+
+
+    function doThis(userInput){
+        const SPECIALCHARS = [
+            "$", "^", "*", "(", ")", "?", "+", "[", "|",
+            ".", "/", "\\"
+        ];
+
+        var caseModifier = 'i';
+        var caseSensitive = $('#case-sensitive-checkbox').prop('checked');
+        if (caseSensitive) { caseModifier = ''; }
+
+        var pattern = new RegExp(userInput, (caseModifier + 'g'));
+
+        var searchText = paragraph.text();
+
+
+        if (noMatches(pattern)){
+            clearResults();
+        }
+        else {
+            var matches = searchText.match(pattern);
+
+            highlightMatches(matches);
+        }
+    }
+
+
+    function clearResults(){
+        paragraph.children('span').removeClass('highlighted');
+        $('#search-result').text('0');
     }
 
 </script>
