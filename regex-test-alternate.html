@@ -30,7 +30,7 @@
 
 </div>
 
-<p id="text-to-search">I live at 100 N. 7000 W. West Valley City, UT. My zip code is 90210-1012. The ongoing public feud between Sen. Bob Corker and President Donald Trump exploded Tuesday ahead of the President's high-stakes visit to Capitol Hill for tax negotiations, with the Tennessee Republican telling CNN's Manu Raju he wouldn't support Trump for president if given the opportunity again.
+<p id="text-to-search">I live at 100 N. 7000 W. West Valley City, UT. My zip code is 90210-1012. The ongoing public feud between Sen. Bob Corker and President Donald Trump exploded Tuesday ahead of the President's high-stakes visit to Capitol Hill for tax negotiations, with the Tennessee Republican telling CNN's Manu Raju+ he wouldn't support Trump for president if given the opportunity again.
 </p>
 <br>
 <br>
@@ -41,17 +41,93 @@
 <script src="jquery-3.2.1.min.js"></script>
 <script>
 
-    function uniqueItems(arr){
-        for (var i=0, newArr=[];  i<arr.length;  ++i){
-            if (i===0) {
-                newArr.push(arr[i]);
-            }
-            else if (newArr.indexOf( arr[i] ) === -1) {
-                newArr.push(arr[i]);
-            }
+    function showMatches(){
+        var userInput = $('#text-input').val();
+
+        if (userInput === '' ){
+            clearMatches();
         }
-        return newArr;
+        else{
+            updateMatches(userInput);
+        }
     }
+
+
+    function clearMatches(){
+        var paragraph = $('#text-to-search');
+        paragraph.children('span').removeClass('highlighted');
+        $('#search-result').text('0');
+    }
+
+
+    function updateMatches(userInput){
+
+        var matches = getMatches(userInput);
+
+        if (empty(matches)){
+            clearMatches();
+        }
+        else {
+            highlightMatches(matches);
+        }
+    }
+
+
+    function getMatches(userInput){
+
+        var pattern = prepRegularExpression(userInput);
+        console.log(pattern);
+
+        var searchText = $('#text-to-search').text();
+
+        return searchText.match(pattern);
+    }
+
+
+    function prepRegularExpression(userInput){
+        userInput = escapeSpecialChars(userInput);
+
+        var caseModifier = getCaseModifier();
+
+        return new RegExp(userInput, (caseModifier + 'g'));
+    }
+
+
+    function escapeSpecialChars(txt){
+        var specialChars = [
+            "\\", "$", "^", "*", "(", ")", "?", "+", "[", "|",
+            ".", "/"
+        ];
+
+        var escapedSpecialChars = [
+            "\\", "\$", "\^", "\*", "\(", "\)", "\?", "\+", "\[", "\|",
+            "\.", "\/"
+        ];
+
+        // Another 2 backslashes have to be added to beginning of escaped
+        // special characters when used inside regular expression patterns:
+        for (var i=0, specialCharsEscapedForRegularExpression=[];
+             i < escapedSpecialChars.length;  ++i){
+            specialCharsEscapedForRegularExpression[i] = '\\' + escapedSpecialChars[i];
+        }
+
+        for (var i=0;  i < specialChars.length;  ++i){
+            txt = txt.replace(new RegExp(specialCharsEscapedForRegularExpression[i],'g'),
+                specialCharsEscapedForRegularExpression[i]);
+        }
+
+        return txt;
+    }
+
+
+    function getCaseModifier(){
+        var caseModifier = 'i';
+        var caseSensitive = $('#case-sensitive-checkbox').prop('checked');
+        if (caseSensitive) { caseModifier = ''; }
+        return caseModifier;
+    }
+
+
 
 
     /*
@@ -78,14 +154,10 @@
         to be displayed as HTML character entities ( such as '&lt;' and '&gt;' )
     */
 
-    function noMatches(pattern){
+    function empty(matches){
         //for debugging:
        // $('#debug-text').text(innerText);
-
-        var searchText = $('#text-to-search').text();
-        var matches = searchText.match(pattern);
         return isNotArray(matches);
-
     }
 
 
@@ -98,7 +170,7 @@
         const OPENSPAN = '⚣⚣⚣';
         const CLOSESPAN = '⚤⚤⚤';
 
-
+        var paragraph = $('#text-to-search');
         $('#search-result').text(matches.length);
 
         // Without this line you'll get redundant iterations in the loop
@@ -107,11 +179,11 @@
 
         for (var i=0, innerText = paragraph.text();
              i < matches.length;   ++i){
-            var currentSearch = matches[i];
-
-            var regex = new RegExp(currentSearch,'g');
+            var unescapedSearch = matches[i];
+            var escapedSearch = escapeSpecialChars(unescapedSearch);
+            var regex = new RegExp(escapedSearch,'g');
             innerText = innerText.replace(regex,
-                OPENSPAN + currentSearch + CLOSESPAN);
+                OPENSPAN + unescapedSearch + CLOSESPAN);
             // <span> substitutions.  Substituting html tags with
             // these special placeholders and then putting the tags
             // back in once the loop is over solves bugs.
@@ -128,50 +200,16 @@
     }
 
 
-    function showMatches(){
-
-        var userInput = $('#text-input').val();
-        var paragraph = $('#text-to-search');
-
-        if (userInput === '' ){
-            clearResults();
+    function uniqueItems(arr){
+        for (var i=0, newArr=[];  i<arr.length;  ++i){
+            if (i===0) {
+                newArr.push(arr[i]);
+            }
+            else if (newArr.indexOf( arr[i] ) === -1) {
+                newArr.push(arr[i]);
+            }
         }
-        else{
-            doThis(userInput);
-        }
-
-    }
-
-
-    function doThis(userInput){
-        const SPECIALCHARS = [
-            "$", "^", "*", "(", ")", "?", "+", "[", "|",
-            ".", "/", "\\"
-        ];
-
-        var caseModifier = 'i';
-        var caseSensitive = $('#case-sensitive-checkbox').prop('checked');
-        if (caseSensitive) { caseModifier = ''; }
-
-        var pattern = new RegExp(userInput, (caseModifier + 'g'));
-
-        var searchText = paragraph.text();
-
-
-        if (noMatches(pattern)){
-            clearResults();
-        }
-        else {
-            var matches = searchText.match(pattern);
-
-            highlightMatches(matches);
-        }
-    }
-
-
-    function clearResults(){
-        paragraph.children('span').removeClass('highlighted');
-        $('#search-result').text('0');
+        return newArr;
     }
 
 </script>
