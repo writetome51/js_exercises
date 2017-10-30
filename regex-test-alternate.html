@@ -30,7 +30,7 @@
 
 </div>
 
-<p id="text-to-search">I live at 100 N. 7000 W. West Valley City, UT. My zip code is 90210-1012. The ongoing public feud between Sen. Bob Corker and President Donald Trump exploded Tuesday ahead of the President's high-stakes visit to Capitol Hill for tax negotiations, with the Tennessee Republican telling CNN's Manu Raju+ he wouldn't support Trump for president if given the opportunity again.
+<p id="text-to-search">I live at 100 N. 7000 W. West Valley City, UT. My zip code is 90210-1012. The ongoing public feud between Sen. Bob Corker and President Donald Trump exploded Tuesday ahead of the President's high-stakes visit to Capitol Hill for tax negotiations, with the Tennessee Republican telling CNN's Manu Raju he wouldn't support Trump for president if given the opportunity again.
 </p>
 <br>
 <br>
@@ -68,15 +68,20 @@
             clearMatches();
         }
         else {
+            setMatchesFoundNumber(matches);
             highlightMatches(matches);
         }
+    }
+
+
+    function setMatchesFoundNumber(matches){
+        $('#search-result').text(matches.length);
     }
 
 
     function getMatches(userInput){
 
         var pattern = prepRegularExpression(userInput);
-        console.log(pattern);
 
         var searchText = $('#text-to-search').text();
 
@@ -85,7 +90,7 @@
 
 
     function prepRegularExpression(userInput){
-        userInput = escapeSpecialChars(userInput);
+        userInput = escapeSpecialCharsForRegexUse(userInput);
 
         var caseModifier = getCaseModifier();
 
@@ -93,27 +98,19 @@
     }
 
 
-    function escapeSpecialChars(txt){
-        var specialChars = [
-            "\\", "$", "^", "*", "(", ")", "?", "+", "[", "|",
-            ".", "/"
-        ];
+    function escapeSpecialCharsForRegexUse(txt){
 
+        // To ignore the meaning of escaped special characters inside regex patterns,
+        // Another 2 backslashes have to be added to their beginning, even
+        // though they're already escaped:
         var escapedSpecialChars = [
-            "\\", "\$", "\^", "\*", "\(", "\)", "\?", "\+", "\[", "\|",
-            "\.", "\/"
+            "\\\\", "\\\$", "\\\^", "\\\*", "\\\(", "\\\)", "\\\?",
+            "\\\+", "\\\[", "\\\|", "\\\.", "\\\/"
         ];
 
-        // Another 2 backslashes have to be added to beginning of escaped
-        // special characters when used inside regular expression patterns:
-        for (var i=0, specialCharsEscapedForRegularExpression=[];
-             i < escapedSpecialChars.length;  ++i){
-            specialCharsEscapedForRegularExpression[i] = '\\' + escapedSpecialChars[i];
-        }
-
-        for (var i=0;  i < specialChars.length;  ++i){
-            txt = txt.replace(new RegExp(specialCharsEscapedForRegularExpression[i],'g'),
-                specialCharsEscapedForRegularExpression[i]);
+        for (var i=0;  i < escapedSpecialChars.length;  ++i){
+            txt = txt.replace(new RegExp(escapedSpecialChars[i],'g'),
+                escapedSpecialChars[i]);
         }
 
         return txt;
@@ -126,8 +123,6 @@
         if (caseSensitive) { caseModifier = ''; }
         return caseModifier;
     }
-
-
 
 
     /*
@@ -167,20 +162,29 @@
 
 
     function highlightMatches(matches){
+
+        var paragraph = $('#text-to-search');
+
+        // Without this line you'll get redundant loop iterations:
+        matches = uniqueItems(matches);
+
+        var innerText =  wrapEachInsideSpanElement(matches);
+
+        paragraph.html(innerText);
+
+        paragraph.children('span').addClass('highlighted');
+
+    }
+
+
+    function wrapEachInsideSpanElement(matches){
         const OPENSPAN = '⚣⚣⚣';
         const CLOSESPAN = '⚤⚤⚤';
 
-        var paragraph = $('#text-to-search');
-        $('#search-result').text(matches.length);
-
-        // Without this line you'll get redundant iterations in the loop
-        // below:
-        matches = uniqueItems(matches);
-
-        for (var i=0, innerText = paragraph.text();
+        for (var i=0, innerText = $('#text-to-search').text();
              i < matches.length;   ++i){
             var unescapedSearch = matches[i];
-            var escapedSearch = escapeSpecialChars(unescapedSearch);
+            var escapedSearch = escapeSpecialCharsForRegexUse(unescapedSearch);
             var regex = new RegExp(escapedSearch,'g');
             innerText = innerText.replace(regex,
                 OPENSPAN + unescapedSearch + CLOSESPAN);
@@ -193,10 +197,8 @@
         innerText = innerText.replace(regex, "<span>");
         regex = new RegExp(CLOSESPAN,'g');
         innerText = innerText.replace(regex, "</span>");
-        paragraph.html(innerText);
 
-        paragraph.children('span').addClass('highlighted');
-
+        return innerText;
     }
 
 

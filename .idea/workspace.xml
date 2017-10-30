@@ -4,8 +4,6 @@
     <list default="true" id="9bb5d02b-6ff7-43f9-a638-61fbb4613bd9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/regex-test-alternate.html" afterPath="$PROJECT_DIR$/regex-test-alternate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/regex-test.html" afterPath="$PROJECT_DIR$/regex-test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.html" afterPath="$PROJECT_DIR$/test.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,8 +20,8 @@
       <file leaf-file-name="regex-test-alternate.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/regex-test-alternate.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="175" column="9" lean-forward="true" selection-start-line="175" selection-start-column="9" selection-end-line="175" selection-end-column="9" />
+            <state relative-caret-position="1282">
+              <caret line="125" column="4" lean-forward="false" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="4" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -57,6 +55,9 @@
       <find>.re</find>
       <find>replac</find>
       <find>paragr</find>
+      <find>escapespecialchars</find>
+      <find>specialChars</find>
+      <find>paragraph</find>
     </findStrings>
     <replaceStrings>
       <replace>changeBackgroundColorOfElementBasedOn</replace>
@@ -65,6 +66,7 @@
       <replace>innerHtml</replace>
       <replace>paragraph</replace>
       <replace>matches</replace>
+      <replace>escapeSpecialCharsForRegexUse</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -110,7 +112,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="4" />
     <option name="y" value="23" />
-    <option name="width" value="957" />
+    <option name="width" value="976" />
     <option name="height" value="736" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -219,18 +221,19 @@
       <workItem from="1509139797593" duration="4897000" />
       <workItem from="1509256348871" duration="9605000" />
       <workItem from="1509268032109" duration="2431000" />
-      <workItem from="1509327042894" duration="3446000" />
+      <workItem from="1509327042894" duration="3519000" />
+      <workItem from="1509331175860" duration="2875000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125227000" />
+    <option name="totallyTimeSpent" value="128175000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="23" width="957" height="736" extended-state="0" />
+    <frame x="4" y="23" width="976" height="736" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20619658" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20209424" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -619,14 +622,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="54" column="30" lean-forward="false" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/regex-test-alternate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="175" column="9" lean-forward="true" selection-start-line="175" selection-start-column="9" selection-end-line="175" selection-end-column="9" />
+        <state relative-caret-position="1282">
+          <caret line="125" column="4" lean-forward="false" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="4" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
           </folding>
