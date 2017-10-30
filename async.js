@@ -51,7 +51,7 @@ function doSomethingAsync(callback, args) {
     function executor(callback, args, resolve, reject) {
         window.setTimeout(
             function() {
-                let somethingGoodHappened = callback(args);
+                var somethingGoodHappened = callback(args);
 
                 if( !somethingGoodHappened ) {
                     reject('something bad happened')

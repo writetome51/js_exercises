@@ -8,16 +8,6 @@
         showInitialColors();
 
         var eventConfigurations = [
-            /* Add one configuration object for every eventFunction.
-               A configuration object needs these properties:
-                {
-                    elements: getElementsByIDs(arrayOfIDs),
-                    eventsToAdd: arrayOfEvents,
-                    eventFunction: functionToAttachToEvents
-                }
-            */
-
-
             {
                 elements: getElementsByIDs(
                     [
@@ -37,16 +27,13 @@
                     'change'
                 ],
 
-                eventFunction: changeBackgroundColorOfRelatedElement
+                eventFunctions: [changeBackgroundColorOfRelatedElement]
             },
 
         ];
 
 
-        var configurator = new EventConfigurator();
-
-        configurator.configure(eventConfigurations);
-
+        (new EventConfigurator(eventConfigurations)).configure();
 
     }
 
