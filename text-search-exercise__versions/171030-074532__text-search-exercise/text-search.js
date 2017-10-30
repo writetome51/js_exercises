@@ -1,4 +1,3 @@
-
 function showMatches(){
     var userInput = $('#text-input').val();
 
@@ -144,31 +143,27 @@ function wrapEachInsideSpanElement(matches){
         var unescapedSearch = matches[i];
         var escapedSearch = escapeSpecialCharsForRegexUse(unescapedSearch);
         var regex = new RegExp(escapedSearch,'g');
+        innerText = innerText.replace(regex,
+            OPENSPAN + unescapedSearch + CLOSESPAN);
 
-        innerText = replaceInsideTagSubstitutions(innerText, regex,
-            unescapedSearch, {open:OPENSPAN, close:CLOSESPAN});
-        // <span> substitutions.  Important to protect the tags when doing searching/replacing.
+        innerText = replaceTagsWithSubs(innerText, {OPENSPAN, CLOSESPAN});
+        // <span> substitutions.  Substituting html tags with
+        // these special placeholders and then putting the tags
+        // back in once the loop is over solves bugs.
     }
 
-    innerText = replaceSubsWithTags(innerText,
-        {open:OPENSPAN, close:CLOSESPAN}, {open:'<span>', close:'</span>'});
+    regex = new RegExp(OPENSPAN,'g');
+    innerText = innerText.replace(regex, "<span>");
+    regex = new RegExp(CLOSESPAN,'g');
+    innerText = innerText.replace(regex, "</span>");
 
     return innerText;
 }
 
 
-function replaceInsideTagSubstitutions(txt, patternToReplace, txtThatGoesBetweenSubs, subs){
-    return txt.replace(patternToReplace,
-        subs.open + txtThatGoesBetweenSubs + subs.close);
-}
-
-
-function replaceSubsWithTags(txt, subs, tags){
-    regex = new RegExp(subs.open,'g');
-    txt = txt.replace(regex, tags.open);
-    regex = new RegExp(subs.close,'g');
-    txt = txt.replace(regex, tags.close);
-    return txt;
+function replaceTagsWithSubs(txt, patternToReplace, openAndCloseSubs){
+    txt.replace(patternToReplace,
+        openAndCloseSubs[0] + txt + openAndCloseSubs[1]);
 }
 
 
