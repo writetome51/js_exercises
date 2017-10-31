@@ -1,15 +1,19 @@
 function changeToTextArea(){
+    var paragraph = $('#text-to-search').text();
+    $('#text-to-search-editable').text(paragraph);
     $('#text-to-search-editable').removeClass('not-displayed');
     $('#text-to-search').addClass('not-displayed');
 }
 
 
 function changeToParagraph(){
-    var txt = $('#text-to-search-editable').val();
-    $('#text-to-search-editable').addClass('not-displayed');
+    var editableText = $('#text-to-search-editable');
+    var txt = editableText.val();
+    editableText.addClass('not-displayed');
 
-    $('#text-to-search').text(txt);
-    $('#text-to-search').removeClass('not-displayed');
+    var paragraph = $('#text-to-search');
+    paragraph.text(txt);
+    paragraph.removeClass('not-displayed');
 }
 
 
@@ -140,7 +144,7 @@ function highlightMatches(matches){
     // Without this line you'll get redundant loop iterations:
     matches = uniqueItems(matches);
 
-    var innerText =  wrapEachInsideSpanElement(matches);
+    var innerText =  textWithMatchesInsideSpanElements(matches);
 
     paragraph.html(innerText);
 
@@ -149,7 +153,7 @@ function highlightMatches(matches){
 }
 
 
-function wrapEachInsideSpanElement(matches){
+function textWithMatchesInsideSpanElements(matches){
     const OPENSPAN = '⚣⚣⚣';
     const CLOSESPAN = '⚤⚤⚤';
 

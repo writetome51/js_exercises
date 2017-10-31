@@ -2,19 +2,21 @@
 
         showInitialColors();
 
+        var colorInputs = getElementsByIDs(
+            [
+                // Rule: the input's id must end with '-color' ,
+                // and the element it's intended to change must have an id that's
+                // identical, except not end with '-color'.
+                'left-eye-color',
+                'right-eye-color',
+                'mouth-color',
+                'monster-body-color'
+            ]
+        );
+
         var eventConfigurations = [
             {
-                elements: getElementsByIDs(
-                    [
-                        // Rule: the input's id must end with '-color' ,
-                        // and the element it's intended to change must have an id that's
-                        // identical, except not end with '-color'.
-                        'left-eye-color',
-                        'right-eye-color',
-                        'mouth-color',
-                        'monster-body-color'
-                    ]
-                ),
+                elements: colorInputs,
 
                 eventsToAdd: [
                     // don't include 'on' in the name, and keep it all lowercase:
@@ -27,14 +29,7 @@
 
 
             {
-                elements: getElementsByIDs(
-                    [
-                        'left-eye-color',
-                        'right-eye-color',
-                        'mouth-color',
-                        'monster-body-color'
-                    ]
-                ),
+                elements: colorInputs,
                 eventsToAdd:['change'],
                 eventFunctions:[
                     function(){
