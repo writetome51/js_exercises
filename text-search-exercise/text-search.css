@@ -1,0 +1,15 @@
+
+body{font-family: "Helvetica", serif;}
+
+.highlighted{
+    background-color: lawngreen;   margin:0; border:none;
+    padding:0;
+}
+#text-to-search{white-space:pre-wrap; }
+
+#text-input{margin-right:20px;}
+label{margin-right:5px;}
+
+.not-displayed{display: none;}
+
+textarea{width: 600px;  height:200px;}
