@@ -1,10 +1,5 @@
 (function getInputValuesAndChangeBackgroundColors() {
 
-    mainRoutine();
-
-
-    function mainRoutine() {
-
         showInitialColors();
 
         var eventConfigurations = [
@@ -23,58 +18,35 @@
 
                 eventsToAdd: [
                     // don't include 'on' in the name, and keep it all lowercase:
-                    'input',
-                    'change'
+                    'input'
                 ],
 
                 eventFunctions: [changeBackgroundColorOfRelatedElement]
+
             },
+
+
+            {
+                elements: getElementsByIDs(
+                    [
+                        'left-eye-color',
+                        'right-eye-color',
+                        'mouth-color',
+                        'monster-body-color'
+                    ]
+                ),
+                eventsToAdd:['change'],
+                eventFunctions:[
+                    function(){
+                        alert('the color you entered is ' + this.value);
+                    }
+                ]
+            }
 
         ];
 
 
         (new EventConfigurator(eventConfigurations)).configure();
-
-    }
-
-
-    function showInitialColors() {
-        var inputsDiv = document.getElementById('inputs');
-        var inputs = inputsDiv.getElementsByTagName('input');
-        for (var i = 0; i < inputs.length; ++i) {
-            callAsMethodOfTheObject(inputs[i], changeBackgroundColorOfRelatedElement);
-        }
-    }
-
-
-    //This function assumes it will eventually be attached as
-    //a method to an object.  This is why the reference to this.id
-    function changeBackgroundColorOfRelatedElement() {
-        var color = colorValueFrom(this.id);
-        var id = idOfElementRelatedTo(this.id);
-
-        setBackgroundColorOf(id, color);
-    }
-
-
-    function colorValueFrom(inputId) {
-        return String(document.getElementById(inputId).value);
-    }
-
-
-    function idOfElementRelatedTo(inputId) {
-        return inputId.replace('-color', '');
-        //Add this function later:
-        // function removeDashColorFromEnd(){
-        //      if (inputId has '-color' at its end)
-        //          return inputId.slice(-1, -7)
-        // }
-    }
-
-
-    function setBackgroundColorOf(id, color) {
-        document.getElementById(id).style.backgroundColor = color;
-    }
 
 
 })();

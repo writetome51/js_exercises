@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9bb5d02b-6ff7-43f9-a638-61fbb4613bd9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/color-monster-exercise/color-monster-exercise-utilities.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventConfigurator.js" afterPath="$PROJECT_DIR$/EventConfigurator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/async.js" afterPath="$PROJECT_DIR$/async.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/color-monster-exercise/color-monster-exercise.html" afterPath="$PROJECT_DIR$/color-monster-exercise/color-monster-exercise.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/color-monster-exercise/getInputValuesAndChangeBackgroundColors.js" afterPath="$PROJECT_DIR$/color-monster-exercise/getInputValuesAndChangeBackgroundColors.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EventConfigurator.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/EventConfigurator.js">
+      <file leaf-file-name="getInputValuesAndChangeBackgroundColors.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/color-monster-exercise/getInputValuesAndChangeBackgroundColors.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="51" column="94" lean-forward="true" selection-start-line="51" selection-start-column="94" selection-end-line="51" selection-end-column="94" />
+            <state relative-caret-position="-251">
+              <caret line="0" column="53" lean-forward="false" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -32,8 +33,28 @@
       <file leaf-file-name="color-monster-exercise.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/color-monster-exercise/color-monster-exercise.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="465">
+              <caret line="31" column="48" lean-forward="false" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="color-monster-exercise-utilities.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/color-monster-exercise/color-monster-exercise-utilities.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="36" column="1" lean-forward="false" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="essentials.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/essentials.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="56" lean-forward="false" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -69,6 +90,7 @@
       <find>specialChars</find>
       <find>paragraph</find>
       <find>.val</find>
+      <find>addEventfunctionstoeacheventlistener</find>
     </findStrings>
     <replaceStrings>
       <replace>changeBackgroundColorOfElementBasedOn</replace>
@@ -78,6 +100,7 @@
       <replace>paragraph</replace>
       <replace>matches</replace>
       <replace>escapeSpecialCharsForRegexUse</replace>
+      <replace>addFunctionsToEachEvent</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -114,9 +137,10 @@
         <option value="$PROJECT_DIR$/text-search-exercise/text-search.html" />
         <option value="$PROJECT_DIR$/text-search-exercise/text-search.js" />
         <option value="$PROJECT_DIR$/async.js" />
+        <option value="$PROJECT_DIR$/EventConfigurator.js" />
+        <option value="$PROJECT_DIR$/color-monster-exercise/color-monster-exercise-utilities.js" />
         <option value="$PROJECT_DIR$/color-monster-exercise/color-monster-exercise.html" />
         <option value="$PROJECT_DIR$/color-monster-exercise/getInputValuesAndChangeBackgroundColors.js" />
-        <option value="$PROJECT_DIR$/EventConfigurator.js" />
       </list>
     </option>
   </component>
@@ -127,9 +151,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="249" />
+    <option name="x" value="-29" />
     <option name="y" value="23" />
-    <option name="width" value="1031" />
+    <option name="width" value="1150" />
     <option name="height" value="736" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -180,8 +204,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -258,18 +282,19 @@
       <workItem from="1509393299215" duration="1650000" />
       <workItem from="1509397514048" duration="204000" />
       <workItem from="1509397782710" duration="72000" />
-      <workItem from="1509404475000" duration="1813000" />
+      <workItem from="1509404475000" duration="1857000" />
+      <workItem from="1509408959232" duration="3783000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143475000" />
+    <option name="totallyTimeSpent" value="147302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="249" y="23" width="1031" height="736" extended-state="0" />
+    <frame x="-29" y="23" width="1150" height="736" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22673267" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36315322" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -324,7 +349,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/regex-test.html" />
     <entry file="file://$PROJECT_DIR$/color-monster-exercise/getInputValuesAndChangeBackgroundColors.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -612,41 +636,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/essentials.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="56" lean-forward="false" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/color-monster-exercise/getInputValuesAndChangeBackgroundColors.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/color-monster-exercise/color-monster-exercise.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventConfigurator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="51" lean-forward="true" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/color-monster-exercise/color-monster-exercise-utilities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="1" lean-forward="false" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/essentials.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="56" lean-forward="false" selection-start-line="0" selection-start-column="56" selection-end-line="0" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/color-monster-exercise/color-monster-exercise.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="465">
+          <caret line="31" column="48" lean-forward="false" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventConfigurator.js">
+    <entry file="file://$PROJECT_DIR$/color-monster-exercise/getInputValuesAndChangeBackgroundColors.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="94" lean-forward="true" selection-start-line="51" selection-start-column="94" selection-end-line="51" selection-end-column="94" />
+        <state relative-caret-position="-251">
+          <caret line="0" column="53" lean-forward="false" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
           <folding />
         </state>
       </provider>
