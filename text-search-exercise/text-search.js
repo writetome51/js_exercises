@@ -1,3 +1,17 @@
+function changeToTextArea(){
+    $('#text-to-search-editable').removeClass('not-displayed');
+    $('#text-to-search').addClass('not-displayed');
+}
+
+
+function changeToParagraph(){
+    var txt = $('#text-to-search-editable').val();
+    $('#text-to-search-editable').addClass('not-displayed');
+
+    $('#text-to-search').text(txt);
+    $('#text-to-search').removeClass('not-displayed');
+}
+
 
 function showMatches(){
     var userInput = $('#text-input').val();
