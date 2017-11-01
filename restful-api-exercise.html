@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Test</title>
+    <style>
+        button {
+            margin-right: 40px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="testDiv"></div>
+
+<button onclick="shuffleDeck()">Shuffle Deck</button>
+<button onclick="drawFive()">Draw Five Cards</button>
+
+<script>
+	var deckID;
+	var xhttp;
+
+
+	function ajaxRequest(url, callback) {
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function () {
+
+			if (this.readyState === 4 && this.status === 200) {
+				callback(JSON.parse(this.responseText));
+			}
+		};
+		xhttp.open("GET", url, true);
+		xhttp.send();
+	}
+
+
+	function shuffleDeck() {
+
+		ajaxRequest("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
+			function(obj) {
+				console.log(obj);
+			}
+		);
+
+		console.log(xhttp.responseText);
+	}
+
+
+	function drawFive() {
+		ajaxRequest('https://deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=5');
+	}
+
+
+</script>
+</body>
+</html>

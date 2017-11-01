@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9bb5d02b-6ff7-43f9-a638-61fbb4613bd9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/color-monster-exercise/test.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/restful-api-exercise.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/color-monster-exercise/getInputValuesAndChangeBackgroundColors.js" afterPath="$PROJECT_DIR$/color-monster-exercise/getInputValuesAndChangeBackgroundColors.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text-search-exercise/text-search.html" afterPath="$PROJECT_DIR$/text-search-exercise/text-search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text-search-exercise/text-search.js" afterPath="$PROJECT_DIR$/text-search-exercise/text-search.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,21 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="text-search.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/text-search-exercise/text-search.html">
+      <file leaf-file-name="restful-api-exercise.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/restful-api-exercise.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-95">
-              <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="text-search.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/text-search-exercise/text-search.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="43" lean-forward="true" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+            <state relative-caret-position="139">
+              <caret line="20" column="14" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -45,9 +34,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="HTML File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -122,7 +111,9 @@
         <option value="$PROJECT_DIR$/text-search-exercise/text-search-event-config.js" />
         <option value="$PROJECT_DIR$/color-monster-exercise/getInputValuesAndChangeBackgroundColors.js" />
         <option value="$PROJECT_DIR$/text-search-exercise/text-search.js" />
+        <option value="$PROJECT_DIR$/text-search-exercise/text-search.css" />
         <option value="$PROJECT_DIR$/text-search-exercise/text-search.html" />
+        <option value="$PROJECT_DIR$/restful-api-exercise.html" />
       </list>
     </option>
   </component>
@@ -132,11 +123,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="33" />
-    <option name="y" value="43" />
-    <option name="width" value="1197" />
-    <option name="height" value="736" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -170,7 +159,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -179,20 +167,11 @@
               <item name="js_exercises" type="b2602c69:ProjectViewProjectNode" />
               <item name="js_exercises" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="js_exercises" type="b2602c69:ProjectViewProjectNode" />
-              <item name="js_exercises" type="462c0819:PsiDirectoryNode" />
-              <item name="color-monster-exercise" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="js_exercises" type="b2602c69:ProjectViewProjectNode" />
-              <item name="js_exercises" type="462c0819:PsiDirectoryNode" />
-              <item name="text-search-exercise" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -201,7 +180,7 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -273,18 +252,24 @@
       <workItem from="1509408959232" duration="3960000" />
       <workItem from="1509421026444" duration="2084000" />
       <workItem from="1509424364218" duration="596000" />
-      <workItem from="1509465863809" duration="5005000" />
+      <workItem from="1509465863809" duration="5369000" />
+      <workItem from="1509488723359" duration="80000" />
+      <workItem from="1509550131158" duration="3864000" />
+      <workItem from="1509566934757" duration="3553000" />
+      <workItem from="1509570547082" duration="2254000" />
+      <workItem from="1509573487805" duration="1687000" />
+      <workItem from="1509575300068" duration="1530000" />
+      <workItem from="1509576942914" duration="206000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155164000" />
+    <option name="totallyTimeSpent" value="168702000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="33" y="43" width="1197" height="736" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25765306" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15170771" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47893915" sideWeight="0.5031001" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -297,6 +282,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="CSS Styles" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48279688" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -339,27 +325,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/EventConfigurator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/array-exercise.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/color-monster-exercise/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/color-monster-exercise/test.html" />
     <entry file="file://$PROJECT_DIR$/color-monster-exercise/color-monster-exercise.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -549,13 +515,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/color-monster-exercise/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/color-monster-exercise/test.html" />
     <entry file="file://$PROJECT_DIR$/form-validation.js.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -637,7 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="36" column="1" lean-forward="false" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -645,7 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -653,25 +611,52 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/text-search-exercise/text-search.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="38" lean-forward="false" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/text-search-exercise/text-search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="18" column="114" lean-forward="false" selection-start-line="18" selection-start-column="114" selection-end-line="18" selection-end-column="114" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/text-search-exercise/text-search.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" column="43" lean-forward="true" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
-          <folding />
+          <caret line="15" column="43" lean-forward="false" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/text-search-exercise/text-search.html">
+    <entry file="file://$PROJECT_DIR$/restful-api-exercise.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
-          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        <state relative-caret-position="139">
+          <caret line="20" column="14" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
