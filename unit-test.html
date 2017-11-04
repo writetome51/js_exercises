@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    isArgumentAString(String);
+
+    numberOfArguments(1,2,3,4);
+
+    loopRunsHowManyTimes(1, 10, theLoop);
+
+    isTrue(10, isMultipleOfFive);
+
+
+	function theLoop(i){
+		var x = 10;
+		for (var n = x-i;  n < x;  ++n){
+			var theVar = 'yay';
+		}
+	}
+
+
+    function isArgumentAString(arg){
+		console.log(typeof arg === 'string');
+    }
+
+
+    function numberOfArguments(){
+    	console.log(arguments.length);
+    }
+
+
+    function loopRunsHowManyTimes(numberOfTimesYouExpect, theLimit, theLoop){
+    	var theCount = 0;
+        numberOfTimesYouExpect = theLimit - numberOfTimesYouExpect;
+    	while (numberOfTimesYouExpect < theLimit){
+    		theLoop(numberOfTimesYouExpect);
+    		++theCount;
+    		++numberOfTimesYouExpect;
+        }
+
+        console.log(theCount);
+    }
+
+
+    function isTrue(param, func){
+    	console.log(func(param))
+    }
+
+
+	function isMultipleOfFive(num){
+		return (num % 5 === 0);
+
+	}
+
+</script>
+</body>
+</html>

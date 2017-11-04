@@ -19,11 +19,24 @@
 <script>
 	var deckID;
 	var xhttp;
+	var calledThisManyTimes=0;
+
+	ajaxRequest("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
+		function getResponseText(response) {
+			console.log(response);
+		}
+	);
+
+
+	function getResponseText(itemToAssignTextTo, responseText){
+		itemToAssignTextTo = responseText;
+    }
 
 
 	function ajaxRequest(url, callback) {
 		xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function () {
+			++calledThisManyTimes; // 4 times.
 
 			if (this.readyState === 4 && this.status === 200) {
 				callback(JSON.parse(this.responseText));
@@ -35,14 +48,14 @@
 
 
 	function shuffleDeck() {
-
+		var elementText = document.getElementById('whatever').innerText;
 		ajaxRequest("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
-			function(obj) {
-				console.log(obj);
+			function getResponseTextCaller(responseText) {
+			    getResponseText(elementText, responseText);
 			}
 		);
 
-		console.log(xhttp.responseText);
+
 	}
 
 

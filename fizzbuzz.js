@@ -1,17 +1,20 @@
 
 function isMultipleOfThree(num){
+    'use strict';
     return (num % 3 === 0);
 }
 
 
 function isMultipleOfFive(num){
+    'use strict';
     return (num % 5 === 0);
 
 }
 
 
 function fizzbuzz(){
-    var input = prompt('enter a number');
+    'use strict';
+    var input = window.prompt('enter a number');
     input = Number(input);
 
     var output = '';
@@ -21,13 +24,14 @@ function fizzbuzz(){
     }
 
    else{
-        if (isMultipleOfThree(input))
-            output = 'fizz';
+        if (isMultipleOfThree(input)){
+			output = 'fizz';
+        }
 
-        else if (isMultipleOfFive(input))
-            output = 'buzz';
-
+        else if (isMultipleOfFive(input)){
+			output = 'buzz';
+        }
     }
 
-    alert(output);
+    window.alert(output);
 }
