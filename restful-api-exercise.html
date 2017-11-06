@@ -11,58 +11,69 @@
 </head>
 
 <body>
-<div id="testDiv"></div>
+<div id="deck"></div>
+<div id="hand"></div>
 
 <button onclick="shuffleDeck()">Shuffle Deck</button>
 <button onclick="drawFive()">Draw Five Cards</button>
 
 <script>
-	var deckID;
-	var xhttp;
-	var calledThisManyTimes=0;
-
-	ajaxRequest("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
-		function getResponseText(response) {
-			console.log(response);
-		}
-	);
-
-
-	function getResponseText(itemToAssignTextTo, responseText){
-		itemToAssignTextTo = responseText;
-    }
-
-
-	function ajaxRequest(url, callback) {
-		xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function () {
-			++calledThisManyTimes; // 4 times.
-
-			if (this.readyState === 4 && this.status === 200) {
-				callback(JSON.parse(this.responseText));
-			}
-		};
-		xhttp.open("GET", url, true);
-		xhttp.send();
-	}
+    shuffleDeck();
 
 
 	function shuffleDeck() {
-		var elementText = document.getElementById('whatever').innerText;
-		ajaxRequest("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
-			function getResponseTextCaller(responseText) {
-			    getResponseText(elementText, responseText);
+		ajaxGet("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
+			function setDeckID(response){
+				response = JSON.parse(response);
+				localStorage.setItem('deck_id', response.deck_id);
+				document.getElementById('deck').innerHTML = response.deck_id;
 			}
 		);
-
 
 	}
 
 
 	function drawFive() {
-		ajaxRequest('https://deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=5');
+		var deck_id = localStorage.getItem('deck_id');
+		ajaxGet('https://deckofcardsapi.com/api/deck/' + deck_id + '/draw/?count=5',
+            function setHand(response){
+			    response = JSON.parse(response);
+			    localStorage.setItem('myHand', getEachCard(response.cards));
+			    document.getElementById('hand').innerHTML = localStorage.getItem('myHand');
+
+
+			    function getEachCard(cardObjects){
+                    for (var card=0, hand=[];  card < cardObjects.length; ++card){
+                        hand.push(cardObjects[card].code);
+                    }
+                    return String(hand);
+                }
+            }
+        );
 	}
 
+
+	function ajaxRequest(url, getOrPost, whatToDoWithResponseText) {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+
+			if (this.readyState === 4 && this.status === 200) {
+				whatToDoWithResponseText(this.responseText);
+			}
+		};
+		xhttp.open(getOrPost, url, true);
+		xhttp.send();
+	}
+
+
+	function ajaxGet(url, whatToDoWithResponseText){
+		ajaxRequest(url, "GET", whatToDoWithResponseText);
+    }
+
+
+	function ajaxPost(url, whatToDoWithResponseText){
+		ajaxRequest(url, "POST", whatToDoWithResponseText)
+    }
 
 </script>
 </body>
