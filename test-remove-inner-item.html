@@ -9,11 +9,12 @@
 <script src="essentials.js"></script>
 <script>
     var array = [1,2,3,4,5,6];
-    document.write(array.removeInnerItem(3) + '<br>');
+	array.removeItem(4);
+    document.write(array + '<br>');
 	var array = [1,2,3,4,5,6];
     document.write(array.removeAdjacentItems([4,5]) + '<br>');
 	var array = [1,2,3,4,5,6];
-	array.removeNonAdjacentItems([1,4]);
+	array.removeItems([1,5]);
 	document.write(array);
 </script>
 </body>

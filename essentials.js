@@ -14,12 +14,23 @@ function callAsMethodOfTheObject(obj, functionToCall){
     obj.functionToCall();
 }
 
-// Intended to use as method on array:
-Array.prototype.removeInnerItem =  function(item){
-    var index = this.indexOf(item);
-    this.splice(index, 1);
+
+Array.prototype.removeItem =  function(item){
+	if (this.itemExists(item)){
+		var index = this.indexOf(item);
+		this.splice(index, 1);
+	}
     return this;
 };
+
+
+Array.prototype.removeItems = function(items){
+	for (var i=0; i<items.length;  ++i){
+		this.removeItem(items[i]);
+	}
+	return this;
+};
+
 
 Array.prototype.removeAdjacentItems = function(items){
 	var index = this.indexOf(items[0]);
@@ -27,9 +38,9 @@ Array.prototype.removeAdjacentItems = function(items){
 	return this;
 };
 
-Array.prototype.removeNonAdjacentItems = function(items){
-    for (var i=0; i<items.length;  ++i){
-        this.removeInnerItem(items[i]);
-    }
-    return this;
+
+Array.prototype.itemExists = function(item){
+	return (this.indexOf(item) > -1);
 };
+
+// remember to remove those prototype additions at program's end.
