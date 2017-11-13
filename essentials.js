@@ -15,14 +15,8 @@ function callAsMethodOfTheObject(obj, functionToCall){
 }
 
 
-Array.prototype.removeItem =  function(item){
-	if (this.itemExists(item)){
-		var index = this.indexOf(item);
-		this.splice(index, 1);
-	}
-    return this;
-};
 
+// Additions to the Array prototype:
 
 Array.prototype.removeItems = function(items){
 	for (var i=0; i<items.length;  ++i){
@@ -32,9 +26,20 @@ Array.prototype.removeItems = function(items){
 };
 
 
+Array.prototype.removeItem =  function(item){
+	if (this.itemExists(item)){
+		var index = this.indexOf(item);
+		this.splice(index, 1);
+	}
+    return this;
+};
+
+
 Array.prototype.removeAdjacentItems = function(items){
-	var index = this.indexOf(items[0]);
-	this.splice(index, items.length);
+	if (this.itemExists(items[0])){
+		var index = this.indexOf(items[0]);
+		this.splice(index, items.length);
+	}
 	return this;
 };
 
