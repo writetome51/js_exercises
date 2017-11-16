@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var obj = {value:1};
+    obj.link = obj.value * 2;
+
+    for (var prop in obj){
+    	if (obj.prop === 2){
+    		delete obj.prop;
+        }
+    }
+
+    document.write(obj.link);
+</script>
+</body>
+</html>
