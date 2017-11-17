@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tests</title>
+</head>
+<body>
+
+<script>
+
+    var arr = []; // size of array will be x
+    for (var i=0, x=10000; i < x; ++i){
+        arr.push(Math.floor(Math.random() * 100));
+    }
+
+//var arr = [30,30,30,30,30,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,30,30,30,30,30,30,30,30,30,30,30,30,30,30];
+
+    console.log(quickSort(arr));
+	//var arr = [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2];
+   //document.write(getAverage(arr));
+ //  arr = quickSort(arr);
+
+//   console.log(arr);
+
+
+    function quickSort(array){
+    	var average = getAverage(array);
+    	//var pivot = getPivot(average, array);
+    	var dividedLists = getLessThanAndGreaterThanOrEqualToAverage(average, array);
+
+    	var list1 = dividedLists[0];
+    	var list2 = dividedLists[1];
+
+    	if (listIsStillNotSorted(list1)){
+    		//if (list1.length > 20){
+    			// if (list1.length < 40) console.log(list1);
+				list1 = quickSort(list1);
+            //}
+    		//else{
+    		//	list1.sort(function(a, b){return a-b})
+            //}
+        }
+        if (listIsStillNotSorted(list2)){
+			//if (list2.length > 20){
+				list2 = quickSort(list2);
+			//}
+			//else{
+			//	list2.sort(function(a, b){return a-b})
+			//}
+        }
+
+        var combined = list1.concat(list2);
+    	return combined;
+    }
+
+
+	function getAverage(array){
+		for (var i=0, total=0; i < array.length;  ++i){
+			total += array[i];
+		}
+		return (total / array.length);
+	}
+
+
+
+	function getPivot(average, array){
+
+		// If all the numbers in array are very small in difference,
+        // like for example one is 10.002, another is 10.003, and another is 10.004,
+        // and range isn't set to a small enough number, you'll exceed stack limit.
+		var range = 0.001; // Best to keep range a small number.
+
+		return keepGoingUntilYouFindPivot(range);
+
+
+		function keepGoingUntilYouFindPivot(range){
+
+			for (var i=0; i < array.length; ++i){
+				if (array[i] >= targetNumbers[0] &&
+					array[i] <= targetNumbers[1]){
+					return array[i];
+				}
+			}
+			try{
+				return keepGoingUntilYouFindPivot(range);
+            }
+			catch(error){
+				console.log(array);
+            }
+		}
+	}
+
+
+	function getLessThanAndGreaterThanOrEqualToAverage(average, array){
+		for (var i=0, lessThan=[], greaterThanOrEqualTo=[];
+			 i < array.length; ++i){
+			if (array[i] < average){
+				lessThan.push(array[i]);
+			}
+			else{
+				greaterThanOrEqualTo.push(array[i]);
+			}
+		}
+		return [lessThan, greaterThanOrEqualTo];
+	}
+
+
+	function listIsStillNotSorted(list){
+    	var i=0;
+    	while((typeof list[i + 1]) !== 'undefined'){
+			if (list[i] > list[i + 1]){
+				return true;
+			}
+			++i;
+		}
+
+		return false;
+    }
+
+
+
+    function moreOrLessThan(range, average){
+    	return [(average - range), (average + range)];
+    }
+
+    // 19><35
+   // arr = [6,24,57,1,43,22,0,24,31,13,24,57,1,43,22,0,22,0,88,44,11,33,1,90,23]
+
+
+
+</script>
+</body>
+</html>

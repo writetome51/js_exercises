@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>QuickSort Test</title>
+    <title>Tests</title>
 </head>
 <body>
 
 <script>
 
-    // This runs a quick sort on array of 100,000 numbers:
 
-
-    var arr = generateArrayOfRandomIntegers(100000);
+    var arr = []; // size of array will be x
+    for (var i=0, x=10000; i < x; ++i){
+        arr.push(Math.floor(Math.random() * 100));
+    }
 
     console.log(quickSort(arr));
 
@@ -24,6 +25,23 @@
     	dividedLists = ifListsAreStillNotSorted_ThenSortThem(dividedLists);
 
         return combineAll(dividedLists);
+    }
+
+
+    function ifListsAreStillNotSorted_ThenSortThem(lists){
+    	for (var i=0; i < lists.length; ++i){
+			if (listIsStillNotSorted(lists[i])){
+				lists[i] = quickSort(lists[i]);
+			}
+        }
+    }
+
+
+    function combineAll(arrays){
+    	for (var i = 0, newArray=[]; i < arrays.length; ++i){
+			newArray = newArray.concat(arrays[i]);
+        }
+        return newArray;
     }
 
 
@@ -49,19 +67,9 @@
 	}
 
 
-    function ifListsAreStillNotSorted_ThenSortThem(lists){
-    	for (var i=0; i < lists.length; ++i){
-			if (listIsStillNotSorted(lists[i])){
-				lists[i] = quickSort(lists[i]);
-			}
-        }
-        return lists;
-    }
-
-
 	function listIsStillNotSorted(list){
-		var i=0;
-		while((typeof list[i + 1]) !== 'undefined'){
+    	var i=0;
+    	while((typeof list[i + 1]) !== 'undefined'){
 			if (list[i] > list[i + 1]){
 				return true;
 			}
@@ -69,23 +77,8 @@
 		}
 
 		return false;
-	}
-
-
-	function combineAll(arrays){
-    	for (var i = 0, newArray=[]; i < arrays.length; ++i){
-			newArray = newArray.concat(arrays[i]);
-        }
-        return newArray;
     }
 
-
-	function generateArrayOfRandomIntegers(howMany){
-		for (var i=0, arr=[]; i < howMany; ++i){
-			arr.push(Math.floor(Math.random() * 1000));
-		}
-		return arr;
-	}
 
 
 </script>
